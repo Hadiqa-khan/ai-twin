@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "deny": [
+      "Edit(./modules/**)",
+      "Edit(./envs/**)",
+      "Edit(./bootstrap/**)",
+      "Edit(./README.md)",
+      "Bash(aws *)",
+      "Bash(terraform apply *)",
+      "Bash(terraform destroy *)",
+      "Bash(stratus *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Read(./**/*.tfvars)",
+      "Read(./**/*.tfstate)",
+      "Read(./**/backend.hcl)",
+      "Read(./.env)"
+    ]
+  }
+}

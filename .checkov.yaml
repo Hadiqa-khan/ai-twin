@@ -1,0 +1,5 @@
+framework:
+    - terraform
+skip-path:
+    - tests/fixtures
+compact: true

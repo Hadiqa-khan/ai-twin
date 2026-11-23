@@ -1,0 +1,25 @@
+#TF files
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+override.tf
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+.terraform-version
+
+# Repo files
+*.tfvars
+*.tfvars.json
+!example.tfvars
+backend.hcl
+
+#Secrets and local configs
+.env
+*.pem
+.DS_Store
+attacks/evidence/raw
