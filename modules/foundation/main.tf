@@ -60,6 +60,7 @@ resource "aws_iam_role_policy" "trail_to_logs" {
 }
 
 resource "aws_guardduty_detector" "this" {
+  #checkov:skip=CKV2_AWS_3:Standalone account, no AWS Organizations; the detector is enabled directly in this Region
   enable                       = true
   finding_publishing_frequency = "FIFTEEN_MINUTES"
 }

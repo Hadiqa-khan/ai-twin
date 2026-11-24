@@ -1,0 +1,5 @@
+project           = "[project]"
+github_repo       = "abc[project]"
+alert_email       = "you@example.com"
+state_bucket      = "<bootstrap state_bucket output>"
+access_log_bucket = "<bootstrap access_log_bucket output>"
