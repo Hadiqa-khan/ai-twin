@@ -39,15 +39,18 @@ locals {
       }
     }
     detection-tampering = {
-      source        = ["aws.events", "aws.guardduty", "aws.sns", "aws.logs", "aws.monitoring"]
+      source        = ["aws.events", "aws.guardduty", "aws.sns", "aws.logs", "aws.monitoring", "aws.access-analyzer"]
       "detail-type" = [local.api]
       detail = {
         eventName = [
           "DeleteRule", "DisableRule", "RemoveTargets",
-          "DeleteDetector", "UpdateDetector",
+          "DeleteDetector", "UpdateDetector", "DeleteAnalyzer",
           "Unsubscribe", "DeleteTopic",
           "DeleteLogGroup", "DeleteMetricFilter",
-          "DeleteAlarms", "DisableAlarmActions"
+          "DeleteAlarms", "DisableAlarmActions",
+          #Will trigger everytime terraform apply changes 
+          "PutRule", "PutTargets", "SetTopicAttributes",
+          "PutMetricFilter", "PutMetricAlarm",
         ]
       }
     }
@@ -125,7 +128,7 @@ resource "aws_cloudwatch_event_target" "sns" {
 resource "aws_cloudwatch_log_metric_filter" "iam_persistence" {
   name           = "${var.project}-iam-persistence"
   log_group_name = var.cloudtrail_log_group_name
-  pattern        = "{ ($.eventSource = \"iam.amazonaws.com\") && (($.eventName = \"CreateUser\") || ($.eventName = \"CreateAccessKey\") || ($.eventName = \"CreateLoginProfile\") || ($.eventName = \"AttachUserPolicy\") || ($.eventName = \"PutUserPolicy\") || ($.eventName = \"AddUserToGroup\") || ($.eventName = \"CreateRole\") || ($.eventName = \"UpdateAssumeRolePolicy\") || ($.eventName = \"AttachRolePolicy\")) }"
+  pattern        = "{ ($.eventSource = \"iam.amazonaws.com\") && (($.eventName = \"CreateUser\") || ($.eventName = \"CreateAccessKey\") || ($.eventName = \"CreateLoginProfile\") || ($.eventName = \"AttachUserPolicy\") || ($.eventName = \"PutUserPolicy\") || ($.eventName = \"AddUserToGroup\") || ($.eventName = \"CreateRole\") || ($.eventName = \"UpdateAssumeRolePolicy\") || ($.eventName = \"AttachRolePolicy\") || ($.eventName = \"PutRolePolicy\"))}"
 
   metric_transformation {
     name      = "IamPersistenceEvents"

@@ -33,6 +33,6 @@ variable "state_key_prefix" {
   description = "State Key prefix CI may read and lock."
   validation {
     condition     = can(regex("^[A-Za-z0-9._-]+(/[A-Za-z0-9._-]+)*/$", var.state_key_prefix))
-    error_message = "state_key_prefix must look like envs/dev"
+    error_message = "state_key_prefix must look like envs/dev/"
   }
 }
