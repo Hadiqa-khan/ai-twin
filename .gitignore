@@ -17,6 +17,7 @@ terraform.rc
 *.tfvars.json
 !example.tfvars
 backend.hcl
+learning.md
 
 #Secrets and local configs
 .env
