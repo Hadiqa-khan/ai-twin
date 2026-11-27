@@ -15,3 +15,9 @@ variable "log_bucket_id" {
     error_message = "log_bucket_id must be a valid S3 bucket name (the name, not an ARN)."
   }
 }
+variable "enable_guardduty" {
+  description = "false where GuardDuty isn't available (AWS Free plan)"
+  type        = bool
+  default     = true
+
+}
