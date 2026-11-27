@@ -20,7 +20,7 @@ flowchart LR
   gh[GitHub PR] --> ci[Actions: fmt, validate,<br/>Trivy, Checkov, zizmor]
   ci -->|OIDC, 1h role| plan[terraform plan]
   plan --> aws
-  subgraph aws[AWS account, ap-southeast-2]
+  subgraph aws[AWS account, us-east-1]
     ct[CloudTrail<br/>all regions] --> logs[(Log bucket<br/>private, TLS-only)]
     vpc[VPC, private subnets] -->|flow logs| logs
     ct --> eb[EventBridge<br/>default bus]

@@ -1,0 +1,5 @@
+{
+    "RootMFA": 1,
+    "RootAccessKeys": 0,
+    "Users": 1
+}

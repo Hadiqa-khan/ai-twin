@@ -10,7 +10,7 @@ terraform {
   # bucket comes from backend.hcl (local) or -backend-config (CI)
   backend "s3" {
     key          = "envs/dev/terraform.tfstate"
-    region       = "ap-southeast-2"
+    region       = "us-east-1"
     encrypt      = true
     use_lockfile = true
   }
