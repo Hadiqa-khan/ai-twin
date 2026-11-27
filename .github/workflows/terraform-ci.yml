@@ -87,7 +87,7 @@ jobs:
       id-token: write #Requests OIDC Token
     env:
       TF_VAR_project: ${{ vars.PROJECT }}
-      TF_VAR_github_repo: ${{ github.repository }}
+      TF_VAR_github_repo: ${{ github.repository_owner }}@${{ github.repository_owner_id }}/${{ github.event.repository.name }}@${{ github.repository_id }}
       TF_VAR_alert_email: ${{ secrets.ALERT_EMAIL }}
       TF_VAR_state_bucket: ${{ vars.TF_STATE_BUCKET }}
       TF_VAR_access_log_bucket: ${{ vars.ACCESS_LOG_BUCKET }}
