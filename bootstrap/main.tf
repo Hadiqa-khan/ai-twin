@@ -27,7 +27,8 @@ provider "aws" {
 data "aws_caller_identity" "me" {}
 
 locals {
-  account_id = data.aws_caller_identity.me.account_id
+  account_id             = data.aws_caller_identity.me.account_id
+  access_log_bucket_name = "${var.project}-access-logs-${local.account_id}"
 }
 
 data "aws_iam_policy_document" "access_log_delivery" {
