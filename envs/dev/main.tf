@@ -106,6 +106,7 @@ module "network" {
   source              = "../../modules/network"
   name                = "${var.project}-vpc"
   flow_log_bucket_arn = module.logs.arn
+  az_ids              = ["use1-az1", "use1-az2"] # us-east-1
 }
 
 module "iam" {

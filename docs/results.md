@@ -38,6 +38,8 @@ The design is better than I expected. The two detection paths watch each other: 
 
 **Does IAM detection work in ap-southeast-2?** Yes. The twin notes in a comment (L9-14) that IAM events only reach EventBridge in us-east-1, and uses metric filters on the CloudTrail log group instead. That depends on the foundation trail staying multi-region, including global service events and delivering to CloudWatch Logs (foundation L87-88, L92). Turn any of those off and IAM alerting stops without a sound.
 
+**The project now deploys in us-east-1**. The metric-filter design works there too; EventBridge would also see IAM events there, but both variants keep the same design so the comparison stays fair.
+
 **Weaknesses I found (no scanner flags these):**
 
 - **An alarm already in ALARM sends no second email.** CloudWatch only notifies on a state change. If one IAM change trips the alarm, a second change in the same or next 5-minute window sends nothing. An attacker could make a harmless change first and hide a malicious one behind it. This is the biggest gap, and **my own baseline has it too**: my `iam-persistence` alarm works the same way. Fix options: treat every alarm email as "check CloudTrail for the whole window", or catch IAM with EventBridge in us-east-1.
