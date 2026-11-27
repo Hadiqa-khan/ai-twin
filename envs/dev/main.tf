@@ -97,10 +97,11 @@ module "logs" {
   policy_docs           = [data.aws_iam_policy_document.log_delivery.json]
 }
 module "foundation" {
-  source        = "../../modules/foundation"
-  project       = var.project
-  trail_name    = local.trail_name
-  log_bucket_id = module.logs.id
+  source           = "../../modules/foundation"
+  project          = var.project
+  trail_name       = local.trail_name
+  log_bucket_id    = module.logs.id
+  enable_guardduty = false # AWS Free plan: GuardDuty not available
 }
 module "network" {
   source              = "../../modules/network"

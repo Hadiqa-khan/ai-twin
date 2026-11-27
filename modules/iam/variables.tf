@@ -6,7 +6,7 @@ variable "github_repo" {
   description = "GitHub repo name, owner/repo"
   type        = string
   validation {
-    condition     = can(regex("^[A-Za-z0-9-]+/[A-Za-z0-9._-]+$", var.github_repo))
+    condition     = can(regex("^[A-Za-z0-9-]+(@[0-9]+)?/[A-Za-z0-9._-]+(@[0-9]+)?$", var.github_repo))
     error_message = "github_repo must be owner/repo, e.g. Hadiqa-khan/ai-twin."
   }
 }

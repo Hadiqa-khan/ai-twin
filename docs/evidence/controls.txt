@@ -1,0 +1,60 @@
+true
+{
+    "MultiRegion": true,
+    "Validation": true
+}
+[
+    {
+        "name": "tf-ai-twin-stratus-external-access",
+        "type": "ACCOUNT",
+        "status": "ACTIVE"
+    }
+]
+{
+    "PublicAccessBlockConfiguration": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+    }
+}
+{
+    "EbsEncryptionByDefault": true
+}
+14
+[
+    "ACTIVE"
+]
+{
+    "in": [],
+    "out": []
+}
+[
+    false,
+    false
+]
+------------------------------------------------------------
+|                         ListRules                        |
++-----------------------------------------------+----------+
+|                       n                       |    s     |
++-----------------------------------------------+----------+
+|  tf-ai-twin-stratus-access-analyzer-findings  |  ENABLED |
+|  tf-ai-twin-stratus-cloudtrail-tampering      |  ENABLED |
+|  tf-ai-twin-stratus-detection-tampering       |  ENABLED |
+|  tf-ai-twin-stratus-flowlog-tampering         |  ENABLED |
+|  tf-ai-twin-stratus-guardduty-findings        |  ENABLED |
+|  tf-ai-twin-stratus-s3-policy-change          |  ENABLED |
++-----------------------------------------------+----------+
+[
+    {
+        "name": "/aws/cloudtrail/tf-ai-twin-stratus-trail",
+        "days": 7
+    }
+]
+----------------------------------------------
+|               DescribeAlarms               |
++--------------------------------------+-----+
+|                   n                  |  s  |
++--------------------------------------+-----+
+|  tf-ai-twin-stratus-iam-persistence  |  OK |
++--------------------------------------+-----+
